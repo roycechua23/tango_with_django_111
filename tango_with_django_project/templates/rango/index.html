@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+<head>
+    <title>Rango</title>
+    <link rel="stylesheet" href="{% static 'rango/css/bootstrap.css' %}" />
+    <script src="{% static 'rango/js/jquery-3.2.1.js' %}"></script>
+    <script src="{% static 'rango/js/bootstrap.js' %}"></script>
+</head>
+<body>
+    <h1>Rango says.. </h1>
+    <div>
+        hey there parter! <br />
+      
+    </div>
+    
+    <div>
+    <h2>Most Liked Categories</h2>
+    {% if categories %}
+    <ul>
+        {% for category in categories %}
+            <li><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <strong>There are no categories to present. </strong>
+    {% endif %}
+    </div>
+    
+    <h2>Most Viewed Pages</h2>
+    {% if pages %}
+    <ul>
+        {% for page in pages %}
+            <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <strong>There are no viewed pages to present. </strong>
+    {% endif %}
+    </div>
+    
+    <div>
+        <a class="btn btn-outline-primary" href="/rango/about">About Rango</a>
+        <a class="btn btn-outline-primary" href="/rango/add_category">Add a New Category</a><br>
+        <img src="{% static 'rango/images/rango.jpg' %}" width=400px alt="Picture of rango" />
+    </div>
+</body>
+</html>
